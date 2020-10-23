@@ -1,0 +1,236 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <link rel="stylesheet" type="text/css" href="{% static 'Blog_app/main.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,600&display=swap"
+        rel="stylesheet">
+
+    {% if title %}
+    <title> Bloggin’ Bits - {{ title }}</title>
+    {% else %}
+    <title> Bloggin’ Bits</title>
+    {% endif %}
+
+    <style>
+        #train {
+
+            padding-top: 20px;
+        }
+
+        #conv {
+            display: inline;
+        }
+
+        #subs {
+            padding-top: 20px;
+            padding-bottom: 20px;
+        }
+
+        .blocktest {
+            margin: auto;
+            width: 50%;
+            padding: 10px;
+        }
+
+        #btn {
+
+            margin: 220px;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="site-header">
+        <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
+
+            <a class="navbar-brand mr-4" href="{% url 'basic' %}">  Bloggin’ Bits</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle"
+                aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarToggle">
+                <div class="navbar-nav mr-auto">
+                    <a class="nav-item nav-link" href="{% url 'blog-home' %}">Home</a>
+                    <a class="nav-item nav-link" href="{% url 'blog-about' %}">About</a>
+                </div>
+                <!-- Navbar Right Side -->
+                <div class="navbar-nav">
+                    {% if user.is_authenticated %}
+                    <!--if user is logged in-->
+                    <a class="nav-item nav-link" href="{% url 'post-create' %}">New Post</a>
+                    <a class="nav-item nav-link" href="{% url 'profile' %}">Profile</a>
+                    <a class="nav-item nav-link" href="{% url 'logout' %}">Logout</a>
+                    {% else %}
+                    <a class="nav-item nav-link" href="{% url 'login' %}">Login</a>
+                    <a class="nav-item nav-link" href="{% url 'register' %}">Register</a>
+                    {% endif %}
+                    <!--if the user is logged in then navigation bar should contain a link to Logout pg, else the navigation bar should 
+                    contain a link to logout -->
+                </div>
+            </div>
+
+        </nav>
+    </header>
+    <div class="container">
+        <h2 id="conv" style="letter-spacing:0.4em;">Blogging is a conversation, not a code.</h2>
+        <h1 id="train" style="font-family: 'Playfair Display', serif; ">A place where you can post and share your
+            thoughts</h1>
+        <hr>
+        <h3>Never Miss a New Post.</h3>
+        <form style="padding: 20px 0px 20px 0px;">
+            <div class="form-group">
+                <label for="exampleInputEmail1">Email address</label>
+                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                    placeholder="name@gmail.com">
+                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
+                    else.</small>
+            </div>
+            <a href="{% url 'register' %}"><button type="submit" class="btn btn-info">Register now!</button></a>
+        </form>
+        <hr>
+
+        <div class="blocktest">
+            <h2 id="subs" style="letter-spacing:0.2em;">Train of Thoughts</h2>
+            <div class="card mb-3" style="max-width: 540px;">
+                <div class="row no-gutters">
+                    <div class="col-md-4">
+                        <img src="/media/p1.jpg" class="card-img" alt="...">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body" style="text-align: center;">
+                            <h5 class="card-title" style="padding: 70px 0px 0px 0px;">Top 5 Items Under 20$ I Can't Live
+                                Without</h5>
+                            <p class="card-text">Create a blog post subtitle that summarizes your post in a few short,
+                                punchy sentences and entices your audience to continue reading. Welcome....</p>
+                            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card mb-3" style="max-width: 540px;">
+                <div class="row no-gutters">
+                    <div class="col-md-4">
+                        <img src="/media/p2.jpg" class="card-img" alt="...">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body" style="text-align: center;">
+                            <h5 class="card-title" style="padding: 70px 0px 0px 0px;">5 Pizza places you must know!
+                            </h5>
+                            <p class="card-text">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dignissimos
+                                consequatur aspernatur numquam voluptas, non illum mollitia nihil tenetur necessitatibus
+                                earum soluta eaque
+                            </p>
+                            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card mb-3" style="max-width: 540px;">
+                <div class="row no-gutters">
+                    <div class="col-md-4">
+                        <img src="/media/p3.jpg" class="card-img" alt="...">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body" style="text-align: center;">
+                            <h5 class="card-title" style="padding: 70px 0px 0px 0px;">This artist will surely blow your
+                                mind</h5>
+                            <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit
+                                maxime illo, rem molestiae blanditiis tempore facere minus! Possimus quidem eaque
+                                aspernatur incidunt? </p>
+                            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card mb-3" style="max-width: 540px;">
+                <div class="row no-gutters">
+                    <div class="col-md-4">
+                        <img src="/media/p4.jpg" class="card-img" alt="...">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body" style="text-align: center;">
+                            <h5 class="card-title" style="padding: 70px 0px 0px 0px;">Movies That Need to Be Seen on the
+                                Big Screen</h5>
+                            <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit
+                                maxime illo, rem molestiae blanditiis tempore facere minus! Possimus quidem eaque
+                                aspernatur incidunt? </p>
+                            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card mb-3" style="max-width: 540px;">
+                <div class="row no-gutters">
+                    <div class="col-md-4">
+                        <img src="/media/p5.jpg" class="card-img" alt="...">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body" style="text-align: center;">
+                            <h5 class="card-title" style="padding: 70px 0px 0px 0px;">Back to Fiction: What I'm Reading
+                                This Summer</h5>
+                            <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit
+                                maxime illo, rem molestiae blanditiis tempore facere minus! Possimus quidem eaque
+                                aspernatur incidunt? </p>
+                            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card mb-3" style="max-width: 540px;">
+                <div class="row no-gutters">
+                    <div class="col-md-4">
+                        <img src="/media/p6.jpg" class="card-img" alt="...">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body" style="text-align: center;">
+                            <h5 class="card-title" style="padding: 70px 0px 0px 0px;">Best Podcast to Listen when
+                                travelling</h5>
+                            <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit
+                                maxime illo, rem molestiae blanditiis tempore facere minus! Possimus quidem eaque
+                                aspernatur incidunt? </p>
+                            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <br>
+            <a id="btn" href="{% url 'blog-home' %}"><button type="button" class="btn btn-info">More Posts</button></a>
+
+        </div>
+        <hr>
+        <h3>Feel free to post any comments</h3>
+        <form>
+            <div class="form-group">
+                <label for="exampleFormControlInput1">Email address</label>
+                <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@gmail.com">
+            </div>
+
+            <div class="form-group">
+                <label for="exampleFormControlTextarea1">Any comments?</label>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
+                    placeholder="You can write yor comments here."></textarea>
+            </div>
+            <button type="button" class="btn btn-info">Send</button>
+        </form>
+
+    </div>
+    <div style="background-color: rgb(229, 255, 226)">
+        <footer style="text-align: center;">
+            <p>© 2023 by Train of Thoughts.</p>
+        </footer>
+    </div>
+
+
+</body>

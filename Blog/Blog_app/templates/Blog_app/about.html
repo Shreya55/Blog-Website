@@ -1,0 +1,98 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <link rel="stylesheet" type="text/css" href="{% static 'Blog_app/main.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,600&display=swap"
+        rel="stylesheet">
+
+    {% if title %}
+    <title> Bloggin’ Bits - {{ title }}</title>
+    {% else %}
+    <title> Bloggin’ Bits</title>
+    {% endif %}
+    <style>
+        .container {
+            padding-bottom: 30px;
+            padding-top: 30px;
+            background-color: rgb(229, 255, 226);
+            text-align: center;
+        }
+    </style>
+
+</head>
+
+<body>
+    <header class="site-header">
+        <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
+
+            <a class="navbar-brand mr-4" href="{% url 'basic' %}"> Bloggin’ Bits</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle"
+                aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarToggle">
+                <div class="navbar-nav mr-auto">
+                    <a class="nav-item nav-link" href="{% url 'blog-home' %}">Home</a>
+                    <a class="nav-item nav-link" href="{% url 'blog-about' %}">About</a>
+                </div>
+                <!-- Navbar Right Side -->
+                <div class="navbar-nav">
+                    {% if user.is_authenticated %}
+                    <!--if user is logged in-->
+                    <a class="nav-item nav-link" href="{% url 'post-create' %}">New Post</a>
+                    <a class="nav-item nav-link" href="{% url 'profile' %}">Profile</a>
+                    <a class="nav-item nav-link" href="{% url 'logout' %}">Logout</a>
+                    {% else %}
+                    <a class="nav-item nav-link" href="{% url 'login' %}">Login</a>
+                    <a class="nav-item nav-link" href="{% url 'register' %}">Register</a>
+                    {% endif %}
+                    <!--if the user is logged in then navigation bar should contain a link to Logout pg, else the navigation bar should 
+                    contain a link to logout -->
+                </div>
+            </div>
+
+        </nav>
+    </header>
+
+    <div class="container">
+        <h1 style="font-family: 'Playfair Display', serif; "> Bloggin’ Bits is about-</h1>
+        <h2 style="letter-spacing: 2px;">what’s happening in the world and what people are talking about right now.</h2>
+        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Porro voluptatem, quaerat alias possimus excepturi
+            rerum aperiam, eius eos atque adipisci magni suscipit. Hic ipsum quaerat deleniti temporibus dicta, unde
+            fuga. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Neque sit possimus at deleniti enim
+            asperiores recusandae dolorum sapiente. Maxime impedit eligendi doloribus ad consectetur vero delectus
+            officia sit voluptatum est! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis vero veritatis
+            magnam inventore accusantium nobis praesentium reprehenderit velit expedita iusto sunt tempora odio maxime
+            laudantium non architecto, dignissimos rerum tempore?
+            Recusandae nulla provident facilis, suscipit magnam veritatis id aspernatur eius labore corrupti quae
+            aliquam, neque atque delectus sed. Fuga laboriosam mollitia est qui impedit tempora fugiat modi voluptatum,
+            reprehenderit doloremque.
+            Repellendus fuga molestias error ut cum voluptatibus eaque ad tempore excepturi, aut consequuntur assumenda
+            quasi eum odit nisi voluptates totam corporis perspiciatis recusandae reiciendis, dolores id autem ipsam!
+            Provident, dolor? Lorem ipsum, dolor sit amet consectetur adipisicing elit. Optio obcaecati eum quam
+            possimus odit in vero cumque provident, illum quo numquam perspiciatis ea ipsa libero cupiditate illo ab
+            quaerat fuga.
+            Repudiandae consectetur eligendi, vero animi nam sit repellendus assumenda, quaerat voluptas possimus nulla
+            quo ducimus, quis ad minima corporis! Odio nobis aspernatur rem veritatis molestiae commodi nulla suscipit
+            natus eveniet!
+            Vel vitae eum eaque maiores magnam facilis ea, ab eius recusandae veritatis ratione modi unde voluptatem qui
+            corporis inventore quaerat quo neque quae voluptates sit illo repudiandae veniam. Et, dolorum.
+            Reiciendis similique ut accusamus voluptas quasi eligendi hic labore earum, numquam cupiditate at totam
+            suscipit sequi ullam harum, tenetur dolor ad ipsum eos dolorem. Atque, aliquam ipsum? Distinctio, voluptatum
+            ratione.
+            Tenetur quod, at modi architecto voluptatum recusandae earum fugit beatae fugiat temporibus rem, odio
+            voluptate ad veritatis non ex eveniet laboriosam, facere accusamus delectus corrupti! Officiis odio
+            inventore veritatis velit.</p>
+            <a href="{% url 'basic' %}"><button type="button" class="btn btn-info">Explore Bloggin’ bits</button></a>
+    </div>
