@@ -15,5 +15,5 @@ class Post(models.Model):
     def __str__(self):
         return self.Title
 
-    def get_absolute_url(self):
+    def get_absolute_url(self): #It tells the django where to go when new post is created.
         return reverse('post-detail', kwargs={'pk': self.pk})
