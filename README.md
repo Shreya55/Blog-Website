@@ -5,7 +5,7 @@ authentication for login where a user can login via his google, facebook, linked
 password.
 <hr>
 
-In order to run the application, follow the commands in a terminal - 
+<h4>In order to run the application, follow the commands in a terminal - </h4>
 1) Change the directory to the main app (here blog) ie. cd blog (windows).
 2) Then type the command- python manage.py runserver .
 This will open the application in localhost, domain 8000.
