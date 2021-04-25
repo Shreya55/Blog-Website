@@ -32,6 +32,7 @@ urlpatterns = [
     path('password-reset/done/',auth_views.PasswordResetDoneView.as_view(template_name='users_reg/password_reset_done.html'),name='password_reset_done'),
     path('password-reset-confirm/<uidb64>/<token>/',auth_views.PasswordResetConfirmView.as_view(template_name='users_reg/password_reset_confirm.html'),name='password_reset_confirm'),
     path('password-reset-complete/',auth_views.PasswordResetCompleteView.as_view(template_name='users_reg/password_reset_complete.html'),name='password_reset_complete'),
+    path('oauth/', include('social_django.urls', namespace='social'))
 ]
 
 # in login route, we passed an argument - template_name='users_reg/login.html' to tell django to look for login pg in

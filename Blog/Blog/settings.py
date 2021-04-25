@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'social_django',
 ]
 
 MIDDLEWARE = [
@@ -50,6 +51,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'social_django.middleware.SocialAuthExceptionMiddleware',
 ]
 
 ROOT_URLCONF = 'Blog.urls'
@@ -65,10 +67,33 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'social_django.context_processors.backends', 
+                'social_django.context_processors.login_redirect',
             ],
         },
     },
 ]
+
+AUTHENTICATION_BACKENDS = (
+    'social_core.backends.google.GoogleOAuth2',
+    'social_core.backends.facebook.FacebookOAuth2',
+    'social_core.backends.linkedin.LinkedinOAuth2',
+    'social_core.backends.github.GithubOAuth2',
+
+    'django.contrib.auth.backends.ModelBackend',
+)
+
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '660388896331-tgoucmlbokckdlf6u31mukb9dt5tu6mg.apps.googleusercontent.com'
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'xN2xanfQlGBMs7ld5xAKuxdr'
+
+SOCIAL_AUTH_FACEBOOK_KEY = '906890763428556'  # App ID
+SOCIAL_AUTH_FACEBOOK_SECRET = '1516757c052cd62c60d4cb1f95dca1b4'  # App Secret
+
+SOCIAL_AUTH_GITHUB_KEY = 'a4603e8f6217ac6fad06'
+SOCIAL_AUTH_GITHUB_SECRET = '9de80c73de95f33834c0c87a9498fec4f379366e' 
+
+SOCIAL_AUTH_LINKEDIN_OAUTH2_KEY = '864af4azaflria'
+SOCIAL_AUTH_LINKEDIN_OAUTH2_SECRET = 'AyxkbHErZkcJqaIg'
 
 WSGI_APPLICATION = 'Blog.wsgi.application'
 
@@ -138,3 +163,5 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = os.environ.get('EMAIL_USER')
 EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_PASS')
+
+LOGOUT_URL = 'logout'
